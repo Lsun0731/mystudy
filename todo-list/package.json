@@ -1,0 +1,46 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "Todo List Backend",
+  "private": true,
+  "egg": {
+    "declarations": true
+  },
+  "dependencies": {
+    "egg": "^3.17.5",
+    "egg-bcrypt": "^1.1.0",
+    "egg-cors": "^2.2.3",
+    "egg-jwt": "^3.1.7",
+    "egg-scripts": "^2.17.0",
+    "egg-sequelize": "^6.0.0",
+    "egg-validate": "^2.0.2",
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4"
+  },
+  "devDependencies": {
+    "autod": "^3.0.1",
+    "autod-egg": "^1.0.0",
+    "egg-bin": "^5.14.1",
+    "egg-mock": "^5.10.0",
+    "eslint": "^8.0.0",
+    "eslint-config-egg": "^12.0.0",
+    "factory-girl": "^5.0.2",
+    "sequelize-cli": "^6.6.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "start": "egg-scripts start --daemon --title=todo-list",
+    "stop": "egg-scripts stop --title=todo-list",
+    "dev": "egg-bin dev",
+    "test": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && NODE_ENV=test npx sequelize db:migrate && npm run cov",
+    "db:migrate": "npx sequelize db:migrate",
+    "db:migrate:undo": "npx sequelize db:migrate:undo",
+    "db:seed": "npx sequelize db:seed:all",
+    "db:seed:undo": "npx sequelize db:seed:undo:all"
+  }
+}
