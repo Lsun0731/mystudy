@@ -19,6 +19,7 @@ import 'egg-sequelize';
 import 'egg-validate';
 import 'egg-jwt';
 import 'egg-cors';
+import 'egg-bcrypt';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
   interface EggPlugin {
@@ -38,5 +39,6 @@ declare module 'egg' {
     validate?: EggPluginItem;
     jwt?: EggPluginItem;
     cors?: EggPluginItem;
+    bcrypt?: EggPluginItem;
   }
 }

@@ -13,12 +13,11 @@ module.exports = {
      * }], {});
     */
     await queryInterface.bulkInsert('users', [{
-      firstName: 'John',
-      lastName: 'Doe',
       email: 'john.doe@example.com',
+      username: 'john.doe@example.com',
       password: 'password123',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      created_at: new Date(),
+      updated_at: new Date()
     }], {});
   },
 

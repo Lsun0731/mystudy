@@ -16,10 +16,10 @@ module.exports = {
     await queryInterface.bulkInsert('todos', [{
       title: 'Todo 1',
       description: 'Description 1',
-      status: 'pending',
+      status: 0,
       user_id: 1,
-      createdAt: new Date(),
-      updatedAt: new Date()
+      created_at: new Date(),
+      updated_at: new Date()
     }], {});
   },
 

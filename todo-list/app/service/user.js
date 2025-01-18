@@ -39,54 +39,37 @@ class UserService extends Service {
   }
 
   async login(username, password) {
-    console.log('--------------------------------')
-    console.log(username)
-    console.log(password)
-    console.log('--------------------------------')
-    const { ctx, app } = this;
-    const user = await app.model.Users.findOne({ where: { email: '123' } });
 
-    // 检查用户是否存在
-    // 输出user
-    console.log('--------------------------------')
-    console.log(user)
-    console.log('--------------------------------')
-    
+    const { ctx, app } = this;
+    const user = await app.model.Users.findOne({ where: { username } });
+
     if (!user) {
       ctx.throw(401, '用户名或密码错误'); 
     }
 
     // 验证密码
-    // const [salt, storedHash] = user.password.split(':');
-    // const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
-    // if (hash !== storedHash) {
-    //   ctx.throw(401, '用户名或密码错误');
-    // }
+    if (user.password !== password) {
+      ctx.throw(401, '用户名或密码错误');
+    }
 
-    // // 生成token
-    // const token = app.jwt.sign(
-    //   { 
-    //     id: user.id, 
-    //     username: user.username 
-    //   },
-    //   app.config.jwt.secret,
-    //   { 
-    //     expiresIn: '7d' 
-    //   }
-    // );
-    // console.log('--------------------------------')
-    // console.log(user)
-    // console.log('--------------------------------')
+    // 生成token
+    const token = app.jwt.sign(
+      {
+        id: user.id,
+        username: user.username
+      },
+      app.config.jwt.secret,
+        { expiresIn: '7d' }
+    );
 
-
-    // return {
-    //   token,
-    //   user: {
-    //     id: user.id,
-    //     username: user.username,
-    //     email: user.email,
-    //   },
-    // };
+    return {
+      token,
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+      },
+    };
 
   }
 
@@ -102,6 +85,10 @@ class UserService extends Service {
       username: user.username,
       email: user.email,
     };
+  }
+
+  async genHex (){
+
   }
 }
 

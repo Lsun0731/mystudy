@@ -27,10 +27,11 @@ module.exports = appInfo => {
   };
 
   // 添加JWT配置
-  // config.jwt = {
-  //   secret: 'your-jwt-secret-key-here',
-  //   enable: true,
-  // };
+  config.jwt = {
+    secret: '_1647734844109_3317',
+    // enable: true,
+    expiresIn: '7d',
+  };
 
   // 添加参数验证
   config.validate = {
@@ -44,14 +45,12 @@ module.exports = appInfo => {
     port: 5432,
     database: 'todo_list',
     username: 'postgres', // 根据实际配置修改
-    password: 'postgres', // 根据实际配置修改
+    password: '123456', // 根据实际配置修改
     define: {
       underscored: true, // 使用下划线命名法
       timestamps: true, // 添加 created_at 和 updated_at
-      createdAt: 'created_at',
-      updatedAt: 'updated_at',
       freezeTableName: true, // 不自动将表名变为复数
-    }, 
+    },
   };
 
   return {

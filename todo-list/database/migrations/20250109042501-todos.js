@@ -13,7 +13,7 @@ module.exports = {
     await queryInterface.createTable('todos', {
       id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
       title: Sequelize.STRING,
-      status: Sequelize.ENUM('pending', 'in_progress', 'completed', 'cancelled'),
+      status: Sequelize.INTEGER,
       user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -23,8 +23,8 @@ module.exports = {
         }
       },
       description: Sequelize.TEXT,
-      createdAt: Sequelize.DATE,
-      updatedAt: Sequelize.DATE,
+      created_at: Sequelize.DATE,
+      updated_at: Sequelize.DATE
     });
 
   },

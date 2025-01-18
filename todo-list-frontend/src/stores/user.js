@@ -17,7 +17,7 @@ export const useUserStore = defineStore('user', () => {
       userInfo.value = data.user;
       localStorage.setItem('token', data.token);
       ElMessage.success('登录成功');
-    //   router.push('/');
+      router.push('/');
       return true;
     } catch (error) {
       return false;

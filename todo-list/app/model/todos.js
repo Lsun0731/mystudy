@@ -1,30 +1,33 @@
 'use strict';
 
 module.exports = app => {
-    const { STRING, INTEGER, DATE, TEXT, ENUM } = app.Sequelize;
+	console.log('0-------------------------------------')
+	console.log(app)
+	const { STRING, INTEGER, DATE, TEXT, ENUM } = app.Sequelize;
 
-    const Todos = app.model.define('todos', {
-        id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-        user_id: {
-            type: INTEGER,
-            allowNull: false,
-            references: {
-                model: 'users',
-                key: 'id',
-            },
-        },
-        title: {
-            type: STRING,
-        },
-        description: TEXT,
-        status: ENUM('pending', 'in_progress', 'completed', 'cancelled'),
-        createdAt: DATE,
-        updatedAt: DATE,
-    });
+	ENUM('status', ['未完成', '已完成']);
 
-    Todos.associate = function (models) {
-        Todos.belongsTo(app.model.Users, { foreignKey: 'user_id' });
-    };
+	const Todos = app.model.define('todos', {
+		id: { type: INTEGER, primaryKey: true, autoIncrement: true },
+		user_id: {
+			type: INTEGER,
+			allowNull: false,
+			references: {
+				model: 'users',
+				key: 'id',
+			},
+		},
+		title: {
+			type: STRING,
+		},
+		description: TEXT,
+		status: INTEGER,
+	});
 
-    return Todos;
+	Todos.associate = function () {
+		Todos.belongsTo(app.model.Users, { foreignKey: 'user_id' });
+	};
+
+
+	return Todos;
 }; 

@@ -28,8 +28,8 @@ const userStore = useUserStore();
 const formRef = ref(null);
 const loading = ref(false);
 const form = ref({
-  username: '',
-  password: ''
+  username: 'john.doe@example.com',
+  password: 'password123'
 });
 
 const rules = {
