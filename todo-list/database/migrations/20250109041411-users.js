@@ -15,6 +15,8 @@ module.exports = {
       username: Sequelize.STRING,
       email: Sequelize.STRING,
       password: Sequelize.STRING,
+      token: Sequelize.STRING,
+      token_expired: Sequelize.DATE,
       created_at: Sequelize.DATE,
       updated_at: Sequelize.DATE
     });

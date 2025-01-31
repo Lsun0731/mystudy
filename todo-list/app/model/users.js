@@ -10,6 +10,8 @@ module.exports = app => {
     username: { type: STRING },
     email: STRING,
     password: STRING,
+    token: STRING,
+    token_expired: DATE,
     created_at: DATE,
     updated_at: DATE,
   });

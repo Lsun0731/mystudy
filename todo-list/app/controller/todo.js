@@ -30,13 +30,8 @@ class TodoController extends Controller {
   async index() {
     const { ctx } = this;
     const userId = ctx.state.user.id;
-    const { status, category, priority } = ctx.query;
-
-    const todos = await ctx.service.todo.findAll(userId, {
-      status: status !== undefined ? parseInt(status) : undefined,
-      category,
-      priority: priority !== undefined ? parseInt(priority) : undefined,
-    });
+    
+    const todos = await ctx.service.todo.findAll(userId);
 
     ctx.body = {
       success: true,

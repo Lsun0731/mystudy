@@ -59,18 +59,30 @@ class UserService extends Service {
         username: user.username
       },
       app.config.jwt.secret,
-        { expiresIn: '7d' }
+        { expiresIn: '1d' }
     );
 
     return {
       token,
-      user: {
-        id: user.id,
-        username: user.username,
-        email: user.email,
-      },
+      id: user.id,
+      username: user.username,
+      email: user.email,
     };
 
+  }
+
+  async current() {
+    const { ctx } = this;
+    const user = await ctx.model.User.findByPk(ctx.state.user.id);
+    if (!user) {
+      ctx.throw(404, '用户不存在');
+    }
+
+    return {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+    };
   }
 
   async findById(id) {

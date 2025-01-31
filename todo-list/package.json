@@ -31,7 +31,7 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=todo-list",
+    "start": "egg-scripts start --port=3000 --nohup --title=todo-list",
     "stop": "egg-scripts stop --title=todo-list",
     "dev": "egg-bin dev",
     "test": "egg-bin test",

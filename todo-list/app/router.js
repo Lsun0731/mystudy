@@ -6,9 +6,6 @@
 module.exports = app => {
   const { router, controller } = app;
   const jwtMiddleware = app.middleware.jwt({ secret: app.config.jwt.secret });
-  console.log('app.middleware');
-  console.log(app.middleware);
-  console.log('app.middleware');
   
   // 无需认证的路由
 //   router.post('/api/users/register', controller.user.register);

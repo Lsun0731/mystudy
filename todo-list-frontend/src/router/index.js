@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { useUserStore } from '../stores/user';
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/login',
@@ -23,7 +23,7 @@ const router = createRouter({
       meta: { requiresAuth: true },
       children: [
         {
-          path: '',
+          path: 'todo/list',
           name: 'TodoList',
           component: () => import('../views/todo/List.vue')
         },

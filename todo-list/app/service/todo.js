@@ -54,25 +54,8 @@ class TodoService extends Service {
     const { ctx } = this;
     const where = { user_id: userId };
     
-    if (query.status) {
-      where.status = query.status;
-    }
-    if (query.category) {
-      where.category = query.category;
-    }
-    if (query.priority) {
-      where.priority = query.priority;
-    }
-
-    return ctx.model.Todo.findAll({
+    return ctx.model.Todos.findAll({
       where,
-      include: [{
-        model: ctx.model.Tag,
-        as: 'tags',
-        attributes: ['id', 'name'],
-        through: { attributes: [] },
-      }],
-      order: [['created_at', 'DESC']],
     });
   }
 

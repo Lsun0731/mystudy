@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = options => {
+module.exports = (options) => {
   return async function jwtMiddleware(ctx, next) {
     console.log('------------------------------------------------------------------------')
     console.log(options)
@@ -24,6 +24,7 @@ module.exports = options => {
       ctx.state.user = decoded;
       await next();
     } catch (err) {
+      console.log(err)
       ctx.status = 401;
       ctx.body = {
         success: false,

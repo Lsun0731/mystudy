@@ -3,9 +3,9 @@
 module.exports = app => {
 	console.log('0-------------------------------------')
 	console.log(app)
-	const { STRING, INTEGER, DATE, TEXT, ENUM } = app.Sequelize;
+	const { STRING, INTEGER, DATE, TEXT } = app.Sequelize;
 
-	ENUM('status', ['未完成', '已完成']);
+	const status = ['待办', '进行中', '已完成']
 
 	const Todos = app.model.define('todos', {
 		id: { type: INTEGER, primaryKey: true, autoIncrement: true },
@@ -21,7 +21,12 @@ module.exports = app => {
 			type: STRING,
 		},
 		description: TEXT,
-		status: INTEGER,
+		status: {
+			type: INTEGER,
+			get() {
+				return  status[this.getDataValue('status')]
+			},
+		},
 	});
 
 	Todos.associate = function () {

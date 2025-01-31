@@ -10,7 +10,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1647734844109_3317';
 
   // add your middleware config here
-  config.middleware = ['errorHandler','auth'];
+  config.middleware = ['errorHandler'];
 
   // 关闭CSRF
   config.security = {
@@ -41,7 +41,7 @@ module.exports = appInfo => {
   // 添加数据库配置
   config.sequelize = {
     dialect: 'postgres',
-    host: 'localhost',
+    host: '82.156.62.184',
     port: 5432,
     database: 'todo_list',
     username: 'postgres', // 根据实际配置修改
